@@ -1,5 +1,7 @@
 # Corrección de compilación Android
 
+Validado en [GitHub Actions, ejecución 40362428630](https://github.com/brauliocabosurf-ux/brausport-/actions/runs/40362428630): 112 pruebas Android/JVM y 6 del resolver NSC aprobadas, lint aprobado, Release firmada con el certificado esperado y APK disponible con SHA-256. La publicación de Release sigue siendo manual.
+
 - `compileSdk` 37, AGP 9.1.1 y Gradle 9.3.1 con suma oficial: OkHttp Android 5.5.1 exige API 37 al compilar.
 - Se mantienen `minSdk` 24, `targetSdk` 36 y Kotlin 2.3.21 externo con las opciones de compatibilidad de AGP.
 - La validación completa se ejecuta en GitHub Actions; no se desactivan pruebas, lint ni controles de firma.

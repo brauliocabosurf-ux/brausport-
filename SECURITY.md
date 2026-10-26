@@ -183,19 +183,25 @@ Herramientas: Kotlin 2.0.21 y JUnit 4.13.2. OkHttp 5.5.1 y Okio 3.18.1 se compil
 
 ### Validación en GitHub Actions (26-oct-2026)
 
-- La ejecución [40360511972](https://github.com/brauliocabosurf-ux/brausport-/actions/runs/40360511972) compiló el código Android y ejecutó **112 pruebas: 112 aprobadas, 0 omitidas**. Incluye las cinco de `HlsPolicyIntegrationTest` con Robolectric y las dependencias reales de Maven.
-- La ejecución [40361136689](https://github.com/brauliocabosurf-ux/brausport-/actions/runs/40361136689) pasó pruebas y lint, compiló `assembleRelease` y verificó la firma esperada. El control posterior de NSC falló por buscar una ruta fija dentro del APK; el workflow ahora resuelve el archivo desde la referencia del manifiesto y la tabla de recursos.
-- Las pruebas HLS usan el reloj de pruebas de Media3 para que avancen los reintentos en Robolectric; la política de producción permanece intacta.
+La ejecución [40362428630](https://github.com/brauliocabosurf-ux/brausport-/actions/runs/40362428630), commit `7933e7f97e66e03fe58c962161d86d83e234298f`, terminó correctamente:
+
+- **112 pruebas Android/JVM aprobadas**, incluidas las cinco HLS con Robolectric y las dependencias reales de Maven; ninguna omitida.
+- **6 pruebas del resolver NSC aprobadas**: rutas originales y abreviadas, referencia del manifiesto, rechazo de referencias ambiguas, recursos ausentes y variantes inesperadas.
+- `lintDebug` aprobado; conserva advertencias no bloqueantes y `abortOnError = true`.
+- `assembleRelease` aprobado, con `lintVitalRelease` y certificado de firma esperado.
+- `apksigner` verificó el APK firmado y CI comparó su huella con `brau.expectedCertSha256`.
+- El NSC dentro del APK prohíbe HTTP por defecto, confía en certificados del sistema y permite HTTP únicamente a `108.175.13.7`, sin subdominios.
+- Se generaron el artefacto `apk` (`BrauSportsPlus.apk`) y su archivo SHA-256. No se publicó una Release.
+
+Las pruebas HLS usan `FakeClock(true)` de Media3 para que avancen los reintentos en Robolectric; desactivan el diagnóstico de plataforma solo en las pruebas. La política de producción permanece intacta.
+
+El empaquetador abrevia rutas de recursos (en esta compilación, el NSC está en `res/8G.xml`). `scripts/dump-network-security.py` resuelve el archivo mediante el ID referenciado por el manifiesto y la tabla de recursos, sin asumir su nombre físico. Las comprobaciones se realizan sobre ese XML del APK firmado.
 
 ### Comprobaciones pendientes
-La compilación y las pruebas Android se ejecutan en GitHub Actions; el entorno local no dispone de Android SDK.
 
 | Comprobación | Cómo ejecutarla |
 |---|---|
 | `gradle/verification-metadata.xml` | Workflow manual **"Generar verificación de dependencias"**. Revisar el artefacto (que las versiones sean las de §7) y subirlo a `gradle/`. Local: `./gradlew --write-verification-metadata sha256 help testDebugUnitTest lintDebug assembleDebug` |
-| Comprobación final del APK | Verificación del NSC dentro del APK y generación del SHA-256; la compilación y la firma ya se comprobaron en CI |
-
-La revisión de sintaxis con el compilador de Kotlin (0 errores de sintaxis) **no sustituye** a la compilación.
 
 **Publicación:** solo manual (`publicar = true`). El job `gate` exige `distributionSha256Sum` (ya está) y `verification-metadata.xml` (**pendiente**), además de pruebas, lint, firma y NSC. Mientras falte cualquiera, no se publica.
 
