@@ -1,3 +1,9 @@
+# Corrección de compilación Android
+
+- `compileSdk` 37, AGP 9.1.1 y Gradle 9.3.1 con suma oficial: OkHttp Android 5.5.1 exige API 37 al compilar.
+- Se mantienen `minSdk` 24, `targetSdk` 36 y Kotlin 2.3.21 externo con las opciones de compatibilidad de AGP.
+- La validación completa se ejecuta en GitHub Actions; no se desactivan pruebas, lint ni controles de firma.
+
 # Preparación para GitHub Actions
 
 - El certificado TLS de laboratorio se genera en cada runner con `scripts/generate-test-tls.sh`.

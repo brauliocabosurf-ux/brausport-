@@ -37,7 +37,7 @@ fun releaseCertSha256(): String {
 
 android {
     namespace = "com.brau.sportsplus"
-    compileSdk = 36
+    compileSdk = 37
 
     defaultConfig {
         applicationId = "com.brau.sportsplus"
