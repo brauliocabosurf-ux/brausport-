@@ -34,5 +34,5 @@ fun decodeUtf8(bytes: ByteArray): String {
     val decoder = Charsets.UTF_8.newDecoder()
         .onMalformedInput(CodingErrorAction.REPLACE)
         .onUnmappableCharacter(CodingErrorAction.REPLACE)
-    return decoder.decode(ByteBuffer.wrap(bytes)).toString().removePrefix("﻿")
+    return decoder.decode(ByteBuffer.wrap(bytes)).toString().removePrefix("\uFEFF")
 }
