@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name" translatable="false">BRAU SPORTS+</string>
+    <string name="loading">Cargando lista…</string>
+    <string name="search_hint">Buscar canal…</string>
+    <string name="search_title">Búsqueda</string>
+    <string name="reload">Actualizar lista</string>
+    <string name="change_playlist">Cambiar lista M3U</string>
+    <string name="channels">Canales</string>
+
+    <string name="empty_no_list">Carga una lista M3U para empezar.\nUsa el botón «Cambiar lista M3U».</string>
+    <string name="empty_favorites">Sin favoritos aún.\nMantén presionado OK sobre un canal para agregarlo.</string>
+    <string name="empty_search">Sin resultados para «%1$s»</string>
+    <string name="empty_category">Sin canales</string>
+
+    <string name="playlist_title">Lista M3U</string>
+    <string name="playlist_hint">https://servidor/lista.m3u</string>
+    <string name="playlist_load">Cargar</string>
+    <string name="cancel">Cancelar</string>
+    <string name="playlist_help">Pega la URL de tu lista M3U o XSPF. Si la nueva lista falla, se conserva la actual.\n\nTip: con la app Google TV de tu celular puedes escribir o pegar usando el teclado del teléfono.</string>
+    <string name="playlist_current">\n\nLista actual: %1$s</string>
+
+    <string name="loaded_summary">%1$d canales y %2$d partidos cargados</string>
+    <string name="blocked_summary">%1$d fuentes descartadas por seguridad</string>
+    <string name="truncated_summary">La lista es muy grande: se cargaron solo las primeras 2,000 entradas</string>
+    <string name="fav_added">★ %1$s agregado a favoritos</string>
+    <string name="fav_removed">%1$s quitado de favoritos</string>
+
+    <!-- Errores: textos fijos. Nunca se muestra la URL, el mensaje técnico ni tokens. -->
+    <string name="err_network">No se pudo conectar con el servidor de la lista. Se conserva la lista actual.</string>
+    <string name="err_timeout">El servidor tardó demasiado. Se conserva la lista actual.</string>
+    <string name="err_blocked">Esa dirección no está permitida (red local, credenciales en la URL o formato inválido).</string>
+    <string name="err_cleartext">Ese servidor usa HTTP sin cifrar y no está autorizado en esta versión de la app.</string>
+    <string name="err_http">El servidor respondió con un error. Se conserva la lista actual.</string>
+    <string name="err_too_large">La lista supera el tamaño máximo permitido (2 MiB).</string>
+    <string name="err_format">El archivo no es una lista M3U/XSPF válida.</string>
+    <string name="err_dtd">La lista XSPF contiene declaraciones DTD o entidades, que no se permiten.</string>
+    <string name="err_empty">La lista no tiene canales.</string>
+    <string name="err_no_sources">Todas las fuentes de la lista fueron descartadas por seguridad.</string>
+    <string name="err_storage">No se pudo guardar la lista en la tele (¿almacenamiento lleno?). Se conserva la lista actual.</string>
+    <string name="err_unexpected">No se pudo actualizar la lista. Se conserva la lista actual.</string>
+
+    <string name="side_header">%1$s · %2$d</string>
+    <string name="side_hint">OK otra vez = pantalla completa · ◀ ▶ fuente</string>
+    <string name="source_line">Fuente %1$d/%2$d: %3$s   ◀ ▶</string>
+    <string name="source_failed">Fuente caída, probando %1$s</string>
+    <string name="source_blocked">Fuente bloqueada por la política de red</string>
+    <string name="single_source">Este canal solo tiene una fuente</string>
+    <string name="retry">Reintentar</string>
+    <string name="no_response">La transmisión no responde</string>
+    <string name="channel_error">No se pudo reproducir %1$s\n%2$s\n\nOK: reintentar · ▲ ▼ cambiar de canal · ◀ ▶ cambiar de fuente</string>
+</resources>

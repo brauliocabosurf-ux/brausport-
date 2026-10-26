@@ -1,0 +1,333 @@
+#EXTM3U
+#EXTINF:-1,ESPN Premium Lat
+http://cleartext.example.net/live/0/index.m3u8
+#EXTINF:-1,ESPN Premium Argentina
+https://cdn.example.net/live/1/index.m3u8
+#EXTINF:-1,Fox Sports
+https://cdn.example.net/live/2/index.m3u8
+#EXTINF:-1,Fox Sports 2
+https://cdn.example.net/live/3/index.m3u8
+#EXTINF:-1,Fox Sports 3
+https://cdn.example.net/live/4/index.m3u8
+#EXTINF:-1,TUDN
+http://cleartext.example.net/live/5/index.m3u8
+#EXTINF:-1,TyC Sports
+https://cdn.example.net/live/6/index.m3u8
+#EXTINF:-1,ESPN Lat
+https://cdn.example.net/live/7/index.m3u8
+#EXTINF:-1,ESPN Argentina
+https://cdn.example.net/live/8/index.m3u8
+#EXTINF:-1,ESPN Colombia
+https://cdn.example.net/live/9/index.m3u8
+#EXTINF:-1,ESPN 2
+http://cleartext.example.net/live/10/index.m3u8
+#EXTINF:-1,ESPN 3
+https://cdn.example.net/live/11/index.m3u8
+#EXTINF:-1,ESPN 4
+https://cdn.example.net/live/12/index.m3u8
+#EXTINF:-1,ESPN 5
+https://cdn.example.net/live/13/index.m3u8
+#EXTINF:-1,ESPN 6
+https://cdn.example.net/live/14/index.m3u8
+#EXTINF:-1,ESPN 7
+http://cleartext.example.net/live/15/index.m3u8
+#EXTINF:-1,DirecTV Sports
+https://cdn.example.net/live/16/index.m3u8
+#EXTINF:-1,DirecTV Sports 2
+https://cdn.example.net/live/17/index.m3u8
+#EXTINF:-1,Fox Sports MX
+https://cdn.example.net/live/18/index.m3u8
+#EXTINF:-1,Fox Sports 2 MX
+https://cdn.example.net/live/19/index.m3u8
+#EXTINF:-1,ESPN MX
+http://cleartext.example.net/live/20/index.m3u8
+#EXTINF:-1,ESPN 2 MX
+https://cdn.example.net/live/21/index.m3u8
+#EXTINF:-1,ESPN 3 MX
+https://cdn.example.net/live/22/index.m3u8
+#EXTINF:-1,ESPN 4 MX
+https://cdn.example.net/live/23/index.m3u8
+#EXTINF:-1,ESPN 5 MX
+https://cdn.example.net/live/24/index.m3u8
+#EXTINF:-1,Liga 1
+http://cleartext.example.net/live/25/index.m3u8
+#EXTINF:-1,Liga 1 Max
+https://cdn.example.net/live/26/index.m3u8
+#EXTINF:-1,Movistar Liga De Campeones
+https://cdn.example.net/live/27/index.m3u8
+#EXTINF:-1,beIN Sports Xtra
+https://cdn.example.net/live/28/index.m3u8
+#EXTINF:-1,Azteca Deportes
+https://cdn.example.net/live/29/index.m3u8
+#EXTINF:-1,Azteca 7
+http://cleartext.example.net/live/30/index.m3u8
+#EXTINF:-1,Canal 5
+https://cdn.example.net/live/31/index.m3u8
+#EXTINF:-1,America TV
+https://cdn.example.net/live/32/index.m3u8
+#EXTINF:-1,Space
+https://cdn.example.net/live/33/index.m3u8
+#EXTINF:-1,Warner Bros TV
+https://cdn.example.net/live/34/index.m3u8
+#EXTINF:-1,TNT
+http://cleartext.example.net/live/35/index.m3u8
+#EXTINF:-1,Star Channel
+https://cdn.example.net/live/36/index.m3u8
+#EXTINF:-1,Cinemax
+https://cdn.example.net/live/37/index.m3u8
+#EXTINF:-1,Cinecanal
+https://cdn.example.net/live/38/index.m3u8
+#EXTINF:-1,Telefe
+https://cdn.example.net/live/39/index.m3u8
+#EXTINF:-1,El Trece
+http://cleartext.example.net/live/40/index.m3u8
+#EXTINF:-1,Telemundo Miami
+https://cdn.example.net/live/41/index.m3u8
+#EXTINF:-1,ESPN
+https://cdn.example.net/live/42/index.m3u8
+#EXTINF:-1,ESPN 2
+https://cdn.example.net/live/43/index.m3u8
+#EXTINF:-1,ESPN 3
+https://cdn.example.net/live/44/index.m3u8
+#EXTINF:-1,ESPN 4
+http://cleartext.example.net/live/45/index.m3u8
+#EXTINF:-1,ESPN 5
+https://cdn.example.net/live/46/index.m3u8
+#EXTINF:-1,ESPN 6
+https://cdn.example.net/live/47/index.m3u8
+#EXTINF:-1,ESPN 7
+https://cdn.example.net/live/48/index.m3u8
+#EXTINF:-1,DSports
+https://cdn.example.net/live/49/index.m3u8
+#EXTINF:-1,DSports 2
+http://cleartext.example.net/live/50/index.m3u8
+#EXTINF:-1,DSports Plus
+https://cdn.example.net/live/51/index.m3u8
+#EXTINF:-1,ECDF LigaPro (eventos)
+https://cdn.example.net/live/52/index.m3u8
+#EXTINF:-1,Fox Sports 3
+https://cdn.example.net/live/53/index.m3u8
+#EXTINF:-1,Telefe
+https://cdn.example.net/live/54/index.m3u8
+#EXTINF:-1,Liga1 MAX
+http://cleartext.example.net/live/55/index.m3u8
+#EXTINF:-1,Movistar Deportes
+https://cdn.example.net/live/56/index.m3u8
+#EXTINF:-1,Win Sports plus (2)
+https://cdn.example.net/live/57/index.m3u8
+#EXTINF:-1,Win Sports
+https://cdn.example.net/live/58/index.m3u8
+#EXTINF:-1,Fox Sports
+https://cdn.example.net/live/59/index.m3u8
+#EXTINF:-1,Fox Sports 2
+http://cleartext.example.net/live/60/index.m3u8
+#EXTINF:-1,Fox Sports Premium
+https://cdn.example.net/live/61/index.m3u8
+#EXTINF:-1,TUDN
+https://cdn.example.net/live/62/index.m3u8
+#EXTINF:-1,ESPN 2
+https://cdn.example.net/live/63/index.m3u8
+#EXTINF:-1,ESPN 3
+https://cdn.example.net/live/64/index.m3u8
+#EXTINF:-1,ESPN 4
+http://cleartext.example.net/live/65/index.m3u8
+#EXTINF:-1,Azteca 7
+https://cdn.example.net/live/66/index.m3u8
+#EXTINF:-1,Canal 5
+https://cdn.example.net/live/67/index.m3u8
+#EXTINF:-1,TVC Deportes
+https://cdn.example.net/live/68/index.m3u8
+#EXTINF:-1,Fox Deportes
+https://cdn.example.net/live/69/index.m3u8
+#EXTINF:-1,ESPN Deportes
+http://cleartext.example.net/live/70/index.m3u8
+#EXTINF:-1,TUDN
+https://cdn.example.net/live/71/index.m3u8
+#EXTINF:-1,Univisión
+https://cdn.example.net/live/72/index.m3u8
+#EXTINF:-1,Fox Sports 1
+https://cdn.example.net/live/73/index.m3u8
+#EXTINF:-1,Universo
+https://cdn.example.net/live/74/index.m3u8
+#EXTINF:-1,BeIN Sports Español
+http://cleartext.example.net/live/75/index.m3u8
+#EXTINF:-1,Unimás
+https://cdn.example.net/live/76/index.m3u8
+#EXTINF:-1,BeIN Sports Xtra Español
+https://cdn.example.net/live/77/index.m3u8
+#EXTINF:-1,Telemundo
+https://cdn.example.net/live/78/index.m3u8
+#EXTINF:-1,Premiere 1
+https://cdn.example.net/live/79/index.m3u8
+#EXTINF:-1,Premiere 2
+http://cleartext.example.net/live/80/index.m3u8
+#EXTINF:-1,Premiere 3
+https://cdn.example.net/live/81/index.m3u8
+#EXTINF:-1,Premiere 4
+https://cdn.example.net/live/82/index.m3u8
+#EXTINF:-1,Premiere 5
+https://cdn.example.net/live/83/index.m3u8
+#EXTINF:-1,Premiere 6
+https://cdn.example.net/live/84/index.m3u8
+#EXTINF:-1,Premiere 7
+http://cleartext.example.net/live/85/index.m3u8
+#EXTINF:-1,Sportv
+https://cdn.example.net/live/86/index.m3u8
+#EXTINF:-1,Sportv 3
+https://cdn.example.net/live/87/index.m3u8
+#EXTINF:-1,GP Estados Unidos (Austin) - Carrera - Disney +
+https://cdn.example.net/live/88/index.m3u8
+#EXTINF:-1,GP Estados Unidos (Austin) - Carrera - ESPN 2
+https://cdn.example.net/live/89/index.m3u8
+#EXTINF:-1,GP Estados Unidos (Austin) - Carrera - DAZN F1
+http://cleartext.example.net/live/90/index.m3u8
+#EXTINF:-1,GP Estados Unidos (Austin) - Carrera - FOX Sports 1 AR
+https://cdn.example.net/live/91/index.m3u8
+#EXTINF:-1,GP Estados Unidos (Austin) - Carrera - SporTV 3
+https://cdn.example.net/live/92/index.m3u8
+#EXTINF:-1,GP Estados Unidos (Austin) - Race Hub - Disney +
+https://cdn.example.net/live/93/index.m3u8
+#EXTINF:-1,GP Estados Unidos (Austin) - On Board Colapinto - Disney +
+https://cdn.example.net/live/94/index.m3u8
+#EXTINF:-1,GP Estados Unidos (Austin) - On Board Russell - Disney +
+http://cleartext.example.net/live/95/index.m3u8
+#EXTINF:-1,GP Estados Unidos (Austin) - Cámara On Board - Disney +
+https://cdn.example.net/live/96/index.m3u8
+#EXTINF:-1,Fortaleza CEIF vs Deportivo Cali - Win Sports +
+https://cdn.example.net/live/97/index.m3u8
+#EXTINF:-1,Alianza vs Inter Bogotá - Win Sports +
+https://cdn.example.net/live/98/index.m3u8
+#EXTINF:-1,Atlético Nacional vs Medellín - Win Sports +
+https://cdn.example.net/live/99/index.m3u8
+#EXTINF:-1,Deportes Tolima vs Deportivo Pasto - Win Sports +
+http://cleartext.example.net/live/100/index.m3u8
+#EXTINF:-1,Deportes Tolima vs Deportivo Pasto - Win Sports
+https://cdn.example.net/live/101/index.m3u8
+#EXTINF:-1,Deportivo Moquegua vs Alianza Lima - L1 Max
+https://cdn.example.net/live/102/index.m3u8
+#EXTINF:-1,Deportivo Moquegua vs Alianza Lima - Movistar Deportes
+https://cdn.example.net/live/103/index.m3u8
+#EXTINF:-1,Sport Boys vs FC Cajamarca - L1 Max
+https://cdn.example.net/live/104/index.m3u8
+#EXTINF:-1,Deportivo Garcilaso vs Los Chankas - L1 Max
+http://cleartext.example.net/live/105/index.m3u8
+#EXTINF:-1,Sportivo San Lorenzo vs Cerro Porteño - Tigo Sports
+https://cdn.example.net/live/106/index.m3u8
+#EXTINF:-1,Emelec vs Guayaquil City - Zapping EC
+https://cdn.example.net/live/107/index.m3u8
+#EXTINF:-1,Aucas vs Barcelona - Zapping EC
+https://cdn.example.net/live/108/index.m3u8
+#EXTINF:-1,Aldosivi vs Belgrano - ESPN Premium
+https://cdn.example.net/live/109/index.m3u8
+#EXTINF:-1,Independiente vs Boca Juniors - Disney +
+http://cleartext.example.net/live/110/index.m3u8
+#EXTINF:-1,Independiente vs Boca Juniors - ESPN Premium
+https://cdn.example.net/live/111/index.m3u8
+#EXTINF:-1,Independiente vs Boca Juniors - ESPN 6
+https://cdn.example.net/live/112/index.m3u8
+#EXTINF:-1,Independiente vs Boca Juniors - Vix +
+https://cdn.example.net/live/113/index.m3u8
+#EXTINF:-1,River Plate vs Racing Club - TNT Sports
+https://cdn.example.net/live/114/index.m3u8
+#EXTINF:-1,River Plate vs Racing Club - Disney +
+http://cleartext.example.net/live/115/index.m3u8
+#EXTINF:-1,River Plate vs Racing Club - Vix +
+https://cdn.example.net/live/116/index.m3u8
+#EXTINF:-1,River Plate vs Racing Club - ESPN
+https://cdn.example.net/live/117/index.m3u8
+#EXTINF:-1,Barracas Central vs Estudiantes Río Cuarto - TNT Sports
+https://cdn.example.net/live/118/index.m3u8
+#EXTINF:-1,Central Córdoba SdE vs Vélez Sarsfield - ESPN Premium
+https://cdn.example.net/live/119/index.m3u8
+#EXTINF:-1,Central Córdoba SdE vs Vélez Sarsfield - Disney +
+http://cleartext.example.net/live/120/index.m3u8
+#EXTINF:-1,Univ. Concepción vs Deportes Limache - TNT Sports Chile
+https://cdn.example.net/live/121/index.m3u8
+#EXTINF:-1,Unión La Calera vs Universidad Católica - TNT Sports Chile
+https://cdn.example.net/live/122/index.m3u8
+#EXTINF:-1,Palestino vs Colo-Colo - TNT Sports Chile
+https://cdn.example.net/live/123/index.m3u8
+#EXTINF:-1,Cerro Largo vs Boston River - Disney +
+https://cdn.example.net/live/124/index.m3u8
+#EXTINF:-1,Nacional vs Liverpool - Disney +
+http://cleartext.example.net/live/125/index.m3u8
+#EXTINF:-1,Atlas vs Puebla - TUDN USA
+https://cdn.example.net/live/126/index.m3u8
+#EXTINF:-1,Querétaro vs Cruz Azul - FOX One
+https://cdn.example.net/live/127/index.m3u8
+#EXTINF:-1,América vs Pachuca - TUDN MX
+https://cdn.example.net/live/128/index.m3u8
+#EXTINF:-1,América vs Pachuca - Canal 5 MX
+https://cdn.example.net/live/129/index.m3u8
+#EXTINF:-1,América vs Pachuca - TUDN USA
+http://cleartext.example.net/live/130/index.m3u8
+#EXTINF:-1,Tijuana vs Santos Laguna - FOX One
+https://cdn.example.net/live/131/index.m3u8
+#EXTINF:-1,Tijuana vs Santos Laguna - TUDN USA
+https://cdn.example.net/live/132/index.m3u8
+#EXTINF:-1,Los Angeles FC vs LA Galaxy - Apple TV Español
+https://cdn.example.net/live/133/index.m3u8
+#EXTINF:-1,Tlaxcala vs Correcaminos UAT - Disney +
+https://cdn.example.net/live/134/index.m3u8
+#EXTINF:-1,Tapatío vs Atlético Morelia - Disney +
+http://cleartext.example.net/live/135/index.m3u8
+#EXTINF:-1,Udinese vs Milan - Disney +
+https://cdn.example.net/live/136/index.m3u8
+#EXTINF:-1,Udinese vs Milan - ESPN
+https://cdn.example.net/live/137/index.m3u8
+#EXTINF:-1,Udinese vs Milan - Telemundo
+https://cdn.example.net/live/138/index.m3u8
+#EXTINF:-1,Real Sociedad vs Levante - DSports 2
+https://cdn.example.net/live/139/index.m3u8
+#EXTINF:-1,Real Sociedad vs Levante - ESPN +
+http://cleartext.example.net/live/140/index.m3u8
+#EXTINF:-1,Real Sociedad vs Levante - ESPN Deportes
+https://cdn.example.net/live/141/index.m3u8
+#EXTINF:-1,dsportsar
+https://cdn.example.net/live/142/index.m3u8
+#EXTINF:-1,Barcelona vs Real Madrid - ESPN +
+https://cdn.example.net/live/143/index.m3u8
+#EXTINF:-1,Barcelona vs Real Madrid - ESPN Deportes
+https://cdn.example.net/live/144/index.m3u8
+#EXTINF:-1,Barcelona vs Real Madrid - DAZN LaLiga
+http://cleartext.example.net/live/145/index.m3u8
+#EXTINF:-1,CD Castellón vs Sporting Gijón - LaLiga Hypermotion
+https://cdn.example.net/live/146/index.m3u8
+#EXTINF:-1,AZ vs Twente - Disney +
+https://cdn.example.net/live/147/index.m3u8
+#EXTINF:-1,FC Barcelona Academy vs Palmeiras Academy - ESPN 3
+https://cdn.example.net/live/148/index.m3u8
+#EXTINF:-1,Manchester City Academy vs Boca Juniors Academy - ESPN 3
+https://cdn.example.net/live/149/index.m3u8
+#EXTINF:-1,River Plate Academy vs Chelsea Academy - ESPN 3
+http://cleartext.example.net/live/150/index.m3u8
+#EXTINF:-1,Sporting CP vs Academico Viseu - DSports 2
+https://cdn.example.net/live/151/index.m3u8
+#EXTINF:-1,Jazz vs Lakers - NBA League Pass
+https://cdn.example.net/live/152/index.m3u8
+#EXTINF:-1,Nets vs Pacers - NBA League Pass
+https://cdn.example.net/live/153/index.m3u8
+#EXTINF:-1,Knicks vs Magic - NBA League Pass
+https://cdn.example.net/live/154/index.m3u8
+#EXTINF:-1,Thunder vs Clippers - NBA League Pass
+http://cleartext.example.net/live/155/index.m3u8
+#EXTINF:-1,Timberwolves vs Raptors - NBA League Pass
+https://cdn.example.net/live/156/index.m3u8
+#EXTINF:-1,76ers vs Pistons - NBA League Pass
+https://cdn.example.net/live/157/index.m3u8
+#EXTINF:-1,Kings vs Grizzlies - NBA League Pass
+https://cdn.example.net/live/158/index.m3u8
+#EXTINF:-1,Baltimore Ravens vs Cincinnati Bengals - ESPN 5
+https://cdn.example.net/live/159/index.m3u8
+#EXTINF:-1,Minnesota Vikings vs Indianapolis Colts - ESPN 7
+http://cleartext.example.net/live/160/index.m3u8
+#EXTINF:-1,Baltimore Ravens vs Cincinnati Bengals - Canal 9 MX
+https://cdn.example.net/live/161/index.m3u8
+#EXTINF:-1,Arizona Cardinals vs Denver Broncos - ESPN 7
+https://cdn.example.net/live/162/index.m3u8
+#EXTINF:-1,Las Vegas Raiders vs Los Angeles Rams - ESPN 5
+https://cdn.example.net/live/163/index.m3u8
+#EXTINF:-1,Detroit Lions vs Green Bay Packers - Canal 5 MX
+https://cdn.example.net/live/164/index.m3u8
+#EXTINF:-1,Seattle Seahawks vs Kansas City Chiefs - ESPN 2
+http://cleartext.example.net/live/165/index.m3u8

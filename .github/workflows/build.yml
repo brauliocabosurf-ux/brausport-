@@ -1,0 +1,184 @@
+name: Compilar y publicar APK
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+  workflow_dispatch:
+    inputs:
+      publicar:
+        description: "Publicar Release (solo si todas las comprobaciones obligatorias pasan)"
+        type: boolean
+        default: false
+
+# Permisos mínimos por defecto; solo el job "publish" puede escribir.
+permissions:
+  contents: read
+
+concurrency:
+  group: build-${{ github.ref }}
+  cancel-in-progress: false
+
+# Los hosts con HTTP permitido salen de gradle.properties (brau.cleartextHosts).
+
+jobs:
+  verify:
+    name: Pruebas y lint
+    runs-on: ubuntu-latest
+    steps:
+      # Acciones fijadas por SHA completo (verificado contra la etiqueta indicada en el comentario).
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+        with:
+          persist-credentials: false
+
+      - uses: actions/setup-java@b843ebf9b913146b38da2eaa7aeddf76074ae1ad # v6.1.0
+        with:
+          distribution: temurin
+          java-version: "17"
+
+      # Valida el gradle-wrapper.jar contra las sumas oficiales de Gradle (validate-wrappers: true por defecto).
+      - uses: gradle/actions/setup-gradle@3f5f9adaf7d9fecd50b5935e54106014257a94e6 # v6.4.0
+
+      - name: Generar certificado TLS local de pruebas
+        run: bash scripts/generate-test-tls.sh
+
+      - name: Pruebas (núcleo, red real con HTTP/TLS locales, HLS con Robolectric)
+        run: bash ./gradlew --no-daemon testDebugUnitTest
+
+      - name: Lint
+        run: bash ./gradlew --no-daemon lintDebug
+
+      - name: Reportes
+        if: always()
+        uses: actions/upload-artifact@cf430e030ddbb5b0abf93d22962f4752f3646cd9 # v7.0.2
+        with:
+          name: reportes
+          path: |
+            app/build/reports/
+            app/build/test-results/
+          if-no-files-found: ignore
+          retention-days: 14
+
+  build:
+    name: Compilar y verificar firma
+    needs: verify
+    if: github.event_name != 'pull_request'
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+        with:
+          persist-credentials: false
+
+      - uses: actions/setup-java@b843ebf9b913146b38da2eaa7aeddf76074ae1ad # v6.1.0
+        with:
+          distribution: temurin
+          java-version: "17"
+
+      - uses: gradle/actions/setup-gradle@3f5f9adaf7d9fecd50b5935e54106014257a94e6 # v6.4.0
+
+      - name: Preparar llave temporal
+        env:
+          KEYSTORE_BASE64: ${{ secrets.KEYSTORE_BASE64 }}
+          KEYSTORE_PASSWORD: ${{ secrets.KEYSTORE_PASSWORD }}
+        run: |
+          if [ -z "$KEYSTORE_BASE64" ] || [ -z "$KEYSTORE_PASSWORD" ]; then
+            echo "::error::Faltan los secrets KEYSTORE_BASE64 / KEYSTORE_PASSWORD"; exit 1
+          fi
+          umask 077
+          printf '%s' "$KEYSTORE_BASE64" | base64 -d > "$RUNNER_TEMP/brau.keystore"
+          echo "BRAU_KEYSTORE_FILE=$RUNNER_TEMP/brau.keystore" >> "$GITHUB_ENV"
+
+      - name: Compilar Release (falla si la llave no es la esperada)
+        env:
+          BRAU_KEYSTORE_PASSWORD: ${{ secrets.KEYSTORE_PASSWORD }}
+        run: bash ./gradlew --no-daemon assembleRelease
+
+      - name: Borrar llave temporal
+        if: always()
+        run: |
+          if [ -f "$RUNNER_TEMP/brau.keystore" ]; then
+            shred -u "$RUNNER_TEMP/brau.keystore" 2>/dev/null || rm -f "$RUNNER_TEMP/brau.keystore"
+          fi
+
+      - name: Verificar firma del APK y generar SHA-256
+        run: |
+          set -euo pipefail
+          APK=app/build/outputs/apk/release/app-release.apk
+          EXPECTED=$(grep '^brau.expectedCertSha256=' gradle.properties | cut -d= -f2 | tr 'A-F' 'a-f')
+          APKSIGNER=$(ls -d "$ANDROID_HOME"/build-tools/*/ | sort -V | tail -1)apksigner
+          "$APKSIGNER" verify --verbose "$APK"
+          ACTUAL=$("$APKSIGNER" verify --print-certs "$APK" | grep -m1 'certificate SHA-256 digest' | awk '{print $NF}' | tr 'A-F' 'a-f')
+          if [ "$ACTUAL" != "$EXPECTED" ]; then
+            echo "::error::La huella del certificado del APK no es la esperada"; exit 1
+          fi
+          # El network_security_config.xml empaquetado debe ser exactamente el esperado.
+          AAPT2=$(ls -d "$ANDROID_HOME"/build-tools/*/ | sort -V | tail -1)aapt2
+          "$AAPT2" dump xmltree --file res/xml/network_security_config.xml "$APK" > nsc.txt
+          cat nsc.txt
+          HOSTS=$(grep '^brau.cleartextHosts=' gradle.properties | cut -d= -f2)
+          grep -Eiq 'cleartextTrafficPermitted.*false' nsc.txt || { echo "::error::base-config no prohíbe HTTP"; exit 1; }
+          for h in $(echo "$HOSTS" | tr ',' ' '); do grep -Fq "$h" nsc.txt || { echo "::error::Falta $h en el NSC"; exit 1; }; done
+          DOMAINS=$(grep -c 'E: domain ' nsc.txt || true)
+          EXPECTED_DOMAINS=$(echo "$HOSTS" | tr ',' '\n' | grep -c . || true)
+          [ "$DOMAINS" = "$EXPECTED_DOMAINS" ] || { echo "::error::El NSC tiene $DOMAINS dominios, se esperaban $EXPECTED_DOMAINS"; exit 1; }
+          cp "$APK" BrauSportsPlus.apk
+          sha256sum BrauSportsPlus.apk > BrauSportsPlus.apk.sha256
+          cat BrauSportsPlus.apk.sha256
+
+      - uses: actions/upload-artifact@cf430e030ddbb5b0abf93d22962f4752f3646cd9 # v7.0.2
+        with:
+          name: apk
+          path: |
+            BrauSportsPlus.apk
+            BrauSportsPlus.apk.sha256
+          if-no-files-found: error
+          retention-days: 30
+
+  # Comprobaciones obligatorias que dependen de archivos que el dueño debe revisar y subir.
+  gate:
+    name: Comprobaciones obligatorias para publicar
+    needs: build
+    if: github.event_name == 'workflow_dispatch' && inputs.publicar
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+        with:
+          persist-credentials: false
+      - name: Wrapper con suma SHA-256 oficial
+        run: |
+          grep -Eq '^distributionSha256Sum=[0-9a-f]{64}$' gradle/wrapper/gradle-wrapper.properties \
+            || { echo "::error::Falta distributionSha256Sum (ver README)"; exit 1; }
+      - name: Verificación de dependencias activa
+        run: |
+          test -s gradle/verification-metadata.xml \
+            || { echo "::error::Falta gradle/verification-metadata.xml (workflow 'Generar verificación de dependencias')"; exit 1; }
+          grep -q '<verify-metadata>true</verify-metadata>' gradle/verification-metadata.xml \
+            || { echo "::error::verification-metadata.xml no tiene la verificación activa"; exit 1; }
+
+  publish:
+    name: Publicar Release
+    needs: gate
+    # Nunca automático: solo a mano y solo si pasaron pruebas, lint, firma, NSC y el gate.
+    if: github.event_name == 'workflow_dispatch' && inputs.publicar && github.ref == 'refs/heads/main'
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write # único job con escritura
+    steps:
+      - uses: actions/download-artifact@9000827ccba6bdab643e8b6fd33ac0654aef8333 # v8.0.2
+        with:
+          name: apk
+
+      - name: Comprobar suma antes de publicar
+        run: sha256sum -c BrauSportsPlus.apk.sha256
+
+      # URL fija para instalar desde la tele con Downloader:
+      # https://github.com/<usuario>/<repo>/releases/latest/download/BrauSportsPlus.apk
+      - uses: softprops/action-gh-release@efb35369e0ad2afab669f228072c1b0d510eae64 # v3.0.3
+        with:
+          tag_name: build-${{ github.run_number }}
+          name: BRAU SPORTS+ 1.1.${{ github.run_number }}
+          files: |
+            BrauSportsPlus.apk
+            BrauSportsPlus.apk.sha256
+          fail_on_unmatched_files: true
+          make_latest: true

@@ -1,0 +1,9 @@
+# Finales de línea estables al subir desde Windows o macOS.
+* text=auto eol=lf
+*.bat text eol=crlf
+gradlew text eol=lf
+
+# Binarios
+*.jar binary
+*.png binary
+*.p12 binary

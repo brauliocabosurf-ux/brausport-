@@ -14,3 +14,4 @@ captures/
 *.apk
 *.aab
 *.apk.sha256
+app/src/test/resources/tls/test-server.p12
