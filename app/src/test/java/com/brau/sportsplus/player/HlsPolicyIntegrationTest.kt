@@ -2,6 +2,7 @@ package com.brau.sportsplus.player
 
 import androidx.media3.common.C
 import androidx.media3.exoplayer.ExoPlayer
+import androidx.media3.test.utils.FakeClock
 import androidx.media3.test.utils.robolectric.TestPlayerRunHelper
 import androidx.test.core.app.ApplicationProvider
 import androidx.test.ext.junit.runners.AndroidJUnit4
@@ -57,14 +58,29 @@ class HlsPolicyIntegrationTest {
 
     private fun base() = "http://127.0.0.1:${server.address.port}"
 
+    // Robolectric mantiene detenido el reloj de Android. Media3 necesita un reloj que avance
+    // para procesar los mensajes de reproducción y reintento, igual que sus propias pruebas.
+    private fun newPlayer() = ExoPlayer.Builder(ApplicationProvider.getApplicationContext())
+        .setClock(FakeClock(true))
+        .setUsePlatformDiagnostics(false)
+        .build()
+
+    private fun awaitError(player: ExoPlayer) {
+        try {
+            TestPlayerRunHelper.advance(player).withTimeoutMs(30_000).untilPlayerError()
+        } catch (e: java.util.concurrent.TimeoutException) {
+            throw AssertionError("HLS no terminó: state=${player.playbackState}, served=$served, blocked=$blocked", e)
+        }
+    }
+
     private fun playUntilError(url: String) {
         val sources = SafeMediaSources(SafeHttp.buildClient(policy, loopbackOnly), policy) { type, reason -> blocked += type to reason }
-        val player = ExoPlayer.Builder(ApplicationProvider.getApplicationContext()).build()
+        val player = newPlayer()
         try {
             player.setMediaSource(sources.create(url, asHls = true)!!)
             player.prepare()
             player.play()
-            TestPlayerRunHelper.run(player).withTimeoutMs(30_000).untilPlayerError()
+            awaitError(player)
         } finally {
             player.release()
         }
@@ -126,13 +142,13 @@ class HlsPolicyIntegrationTest {
             val sources = SafeMediaSources(SafeHttp.buildClient(labPolicy, onlyLab), labPolicy) { type, reason ->
                 blocked += type to reason
             }
-            val player = ExoPlayer.Builder(ApplicationProvider.getApplicationContext()).build()
+            val player = newPlayer()
             try {
                 // La URL inicial SÍ es válida: el bloqueo debe ocurrir dentro, al abrir la clave.
                 player.setMediaSource(sources.create("${base()}/media.m3u8", asHls = true)!!)
                 player.prepare()
                 player.play()
-                TestPlayerRunHelper.run(player).withTimeoutMs(30_000).untilPlayerError()
+                awaitError(player)
             } finally {
                 player.release()
             }
