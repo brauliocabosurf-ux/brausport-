@@ -96,6 +96,17 @@ kotlin {
     }
 }
 
+// Las pruebas locales usan los servidores HTTP/TLS del JDK; no forman parte de Android ni del APK.
+tasks.withType<org.jetbrains.kotlin.gradle.tasks.KotlinCompile>().configureEach {
+    if (name.endsWith("UnitTestKotlin")) {
+        compilerOptions.noJdk.set(false)
+        compilerOptions.freeCompilerArgs.add("-Xadd-modules=jdk.httpserver")
+    }
+}
+tasks.withType<Test>().configureEach {
+    jvmArgs("--add-modules=jdk.httpserver")
+}
+
 // El XML generado se agrega a los recursos y se genera antes de cualquier compilación.
 android.sourceSets.getByName("main").res.srcDir(layout.buildDirectory.dir("generated/nsc/res").get().asFile)
 tasks.named("preBuild") { dependsOn("generateNetworkSecurityConfig") }
