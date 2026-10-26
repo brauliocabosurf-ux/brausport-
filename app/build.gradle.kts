@@ -97,7 +97,7 @@ kotlin {
 }
 
 // El XML generado se agrega a los recursos y se genera antes de cualquier compilación.
-android.sourceSets.getByName("main").res.srcDir(layout.buildDirectory.dir("generated/nsc/res"))
+android.sourceSets.getByName("main").res.srcDir(layout.buildDirectory.dir("generated/nsc/res").get().asFile)
 tasks.named("preBuild") { dependsOn("generateNetworkSecurityConfig") }
 
 // Release sin la llave correcta → error claro (nunca se firma con la llave de depuración).

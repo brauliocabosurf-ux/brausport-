@@ -179,7 +179,7 @@ Herramientas: Kotlin 2.0.21 y JUnit 4.13.2. OkHttp 5.5.1 y Okio 3.18.1 se compil
 - `beginRecoveryIfNeeded()` sin efecto: fallan las 2 pruebas del buffering tras una reproducción estable (revisión 4).
 - Sin guardia de socket ni User-Agent: fallan las 3 pruebas correspondientes.
 
-**Wrapper:** `distributionSha256Sum=bd711022…2c5f3531`, tomado del índice oficial https://services.gradle.org/versions/8. En ese mismo índice, la suma del `gradle-wrapper.jar` (`7d3a4ac4…df296172`) coincide byte a byte con la del jar del proyecto.
+**Wrapper:** la distribución Gradle 9.3.1 usa `distributionSha256Sum=b266d5ff6b90eada6dc3b20cb090e3731302e553a27c5d3e4df1f0d76beaff06`, publicado en https://gradle.org/release-checksums/. El bootstrap `gradle-wrapper.jar` conserva la versión oficial 8.14.3 y su suma `7d3a4ac4…df296172`; descarga y verifica la distribución indicada.
 
 ### PENDIENTES: no se pudieron ejecutar aquí
 **Motivo:** este entorno no tiene Android SDK y no puede alcanzar Google Maven, Maven Central ni el portal de plugins de Gradle (verificado de nuevo).
@@ -207,7 +207,7 @@ La revisión de sintaxis con el compilador de Kotlin (0 errores de sintaxis) **n
 
 ## 7. Compilación, firma y CI
 
-- **Versiones:** AGP 8.13.2, Gradle 8.14.3 (wrapper), Kotlin 2.3.21, Media3 1.11.1, OkHttp 5.5.1, AndroidX (core 1.17.0, appcompat 1.7.1, recyclerview 1.4.0, lifecycle 2.9.2), coroutines 1.10.2. compileSdk y targetSdk 36, minSdk 24.
+- **Versiones:** AGP 9.1.1, distribución Gradle 9.3.1, Kotlin 2.3.21, Media3 1.11.1, OkHttp 5.5.1, AndroidX (core 1.17.0, appcompat 1.7.1, recyclerview 1.4.0, lifecycle 2.9.2), coroutines 1.10.2. compileSdk 37, targetSdk 36, minSdk 24. Se conserva Kotlin externo con `android.builtInKotlin=false` y `android.newDsl=false`, opciones de compatibilidad documentadas por Android para AGP 9.
 - **Pruebas en CI:** Robolectric 4.16, androidx.test core 1.5.0 y ext-junit 1.1.5. Son las mismas versiones que usa Media3 1.11.1 en sus propias pruebas.
 - **Release:**
   - Sin respaldo de depuración. Falla si falta la llave o si su certificado no coincide con `brau.expectedCertSha256`.
