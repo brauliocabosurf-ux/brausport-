@@ -42,6 +42,9 @@ jobs:
       - name: Generar certificado TLS local de pruebas
         run: bash scripts/generate-test-tls.sh
 
+      - name: Probar resolución del NSC empaquetado
+        run: python3 -m unittest discover -s scripts -p 'test_*.py'
+
       - name: Pruebas (núcleo, red real con HTTP/TLS locales, HLS con Robolectric)
         run: bash ./gradlew --no-daemon testDebugUnitTest
 
@@ -113,7 +116,7 @@ jobs:
           fi
           # El network_security_config.xml empaquetado debe ser exactamente el esperado.
           AAPT2=$(ls -d "$ANDROID_HOME"/build-tools/*/ | sort -V | tail -1)aapt2
-          "$AAPT2" dump xmltree --file res/xml/network_security_config.xml "$APK" > nsc.txt
+          python3 scripts/dump-network-security.py "$AAPT2" "$APK" > nsc.txt
           cat nsc.txt
           HOSTS=$(grep '^brau.cleartextHosts=' gradle.properties | cut -d= -f2)
           grep -Eiq 'cleartextTrafficPermitted.*false' nsc.txt || { echo "::error::base-config no prohíbe HTTP"; exit 1; }

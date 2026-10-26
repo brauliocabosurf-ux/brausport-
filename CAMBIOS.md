@@ -3,6 +3,12 @@
 - `compileSdk` 37, AGP 9.1.1 y Gradle 9.3.1 con suma oficial: OkHttp Android 5.5.1 exige API 37 al compilar.
 - Se mantienen `minSdk` 24, `targetSdk` 36 y Kotlin 2.3.21 externo con las opciones de compatibilidad de AGP.
 - La validación completa se ejecuta en GitHub Actions; no se desactivan pruebas, lint ni controles de firma.
+- Registro compatible del directorio de recursos generado con AGP 9; `preBuild` depende explícitamente de la generación del NSC.
+- El módulo `jdk.httpserver` se habilita solo al compilar y ejecutar pruebas JVM.
+- Las pruebas HLS usan `FakeClock(true)` de Media3 y desactivan el diagnóstico de plataforma en Robolectric; mantienen todas las comprobaciones de bloqueo.
+- El BOM de `decodeUtf8` se expresa como escape Unicode para superar lint sin cambiar la lectura de listas.
+
+- La verificación del NSC resuelve el recurso referenciado por el manifiesto, sin asumir una ruta fija dentro del APK. Se agregan seis pruebas del resolver; se conservan los controles de HTTP y firma.
 
 # Preparación para GitHub Actions
 

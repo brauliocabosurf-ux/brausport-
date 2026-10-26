@@ -181,15 +181,19 @@ Herramientas: Kotlin 2.0.21 y JUnit 4.13.2. OkHttp 5.5.1 y Okio 3.18.1 se compil
 
 **Wrapper:** la distribución Gradle 9.3.1 usa `distributionSha256Sum=b266d5ff6b90eada6dc3b20cb090e3731302e553a27c5d3e4df1f0d76beaff06`, publicado en https://gradle.org/release-checksums/. El bootstrap `gradle-wrapper.jar` conserva la versión oficial 8.14.3 y su suma `7d3a4ac4…df296172`; descarga y verifica la distribución indicada.
 
-### PENDIENTES: no se pudieron ejecutar aquí
-**Motivo:** este entorno no tiene Android SDK y no puede alcanzar Google Maven, Maven Central ni el portal de plugins de Gradle (verificado de nuevo).
+### Validación en GitHub Actions (26-oct-2026)
+
+- La ejecución [40360511972](https://github.com/brauliocabosurf-ux/brausport-/actions/runs/40360511972) compiló el código Android y ejecutó **112 pruebas: 112 aprobadas, 0 omitidas**. Incluye las cinco de `HlsPolicyIntegrationTest` con Robolectric y las dependencias reales de Maven.
+- La ejecución [40361136689](https://github.com/brauliocabosurf-ux/brausport-/actions/runs/40361136689) pasó pruebas y lint, compiló `assembleRelease` y verificó la firma esperada. El control posterior de NSC falló por buscar una ruta fija dentro del APK; el workflow ahora resuelve el archivo desde la referencia del manifiesto y la tabla de recursos.
+- Las pruebas HLS usan el reloj de pruebas de Media3 para que avancen los reintentos en Robolectric; la política de producción permanece intacta.
+
+### Comprobaciones pendientes
+La compilación y las pruebas Android se ejecutan en GitHub Actions; el entorno local no dispone de Android SDK.
 
 | Comprobación | Cómo ejecutarla |
 |---|---|
 | `gradle/verification-metadata.xml` | Workflow manual **"Generar verificación de dependencias"**. Revisar el artefacto (que las versiones sean las de §7) y subirlo a `gradle/`. Local: `./gradlew --write-verification-metadata sha256 help testDebugUnitTest lintDebug assembleDebug` |
-| Pruebas Android, incluida la integración HLS (`HlsPolicyIntegrationTest`, 5 pruebas con Robolectric 4.16 + Media3 1.11.1) | `./gradlew testDebugUnitTest`, o el job "Pruebas y lint" del workflow |
-| Lint | `./gradlew lintDebug` (y `lintVitalRelease` al compilar Release) |
-| Compilación Android Release firmada | Job "Compilar y verificar firma": `assembleRelease`, `apksigner` con la huella esperada, NSC dentro del APK y SHA-256 |
+| Comprobación final del APK | Verificación del NSC dentro del APK y generación del SHA-256; la compilación y la firma ya se comprobaron en CI |
 
 La revisión de sintaxis con el compilador de Kotlin (0 errores de sintaxis) **no sustituye** a la compilación.
 
